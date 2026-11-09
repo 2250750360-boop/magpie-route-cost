@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usage cost</title>
+  <style>
+    :root { color-scheme: light dark; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      font: 13px/1.6 "Aptos", "Segoe UI Variable", "Noto Sans SC", "PingFang SC", sans-serif;
+      color: var(--magpie-fg, CanvasText);
+      background: var(--magpie-bg, Canvas);
+    }
+    .waiting {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      max-width: 380px;
+      padding: 24px;
+      text-align: center;
+    }
+    .waiting b { font-size: 15px; font-weight: 600; }
+    .waiting div { color: var(--magpie-muted, GrayText); }
+    button {
+      font: inherit;
+      padding: 4px 12px;
+      border: 1px solid var(--magpie-line, ButtonBorder);
+      border-radius: 6px;
+      background: var(--magpie-card, Canvas);
+      color: inherit;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="waiting">
+    <b id="title">Usage cost</b>
+    <div id="said">Connecting to the local route cost service...</div>
+    <button id="retry" type="button" hidden>Retry</button>
+  </div>
+  <script src="_magpie/bridge.js"></script>
+  <script src="boot.js"></script>
+</body>
+</html>

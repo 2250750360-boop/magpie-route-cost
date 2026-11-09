@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="__ROUTE_COST_LANG__">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="route-cost-token" content="__ROUTE_COST_TOKEN__">
+  <meta name="route-cost-theme" content="__ROUTE_COST_THEME__">
+  <meta name="route-cost-lang" content="__ROUTE_COST_LANG__">
+  <meta name="route-cost-tokens" content="__ROUTE_COST_TOKENS__">
+  <title>__ROUTE_COST_TITLE__</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="view">
+    <header class="head">
+      <div class="head-text">
+        <h1 id="title">Usage cost</h1>
+        <p id="subtitle">One line per model, with every agent and provider behind it.</p>
+      </div>
+      <div class="head-actions">
+        <button id="refresh" class="btn ghost" type="button">Refresh</button>
+        <button id="export" class="btn" type="button">Export CSV</button>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="segmented" id="periods" role="group" aria-label="Period">
+        <button type="button" data-period="today">Today</button>
+        <button type="button" data-period="7d">7 days</button>
+        <button type="button" data-period="30d">30 days</button>
+        <button type="button" data-period="all">All</button>
+      </div>
+      <div class="segmented" id="currency" role="group" aria-label="Currency">
+        <button type="button" data-currency="usd">USD</button>
+        <button type="button" data-currency="cny">CNY</button>
+      </div>
+      <div class="filter" id="filter-agent" data-filter="agent">
+        <button class="filter-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <img class="filter-icon" alt="" hidden><span class="filter-label">All agents</span><span class="caret">▾</span>
+        </button>
+        <div class="filter-menu" role="listbox" hidden></div>
+      </div>
+      <div class="filter" id="filter-provider" data-filter="provider">
+        <button class="filter-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <img class="filter-icon" alt="" hidden><span class="filter-label">All providers</span><span class="caret">▾</span>
+        </button>
+        <div class="filter-menu" role="listbox" hidden></div>
+      </div>
+      <div class="filter" id="filter-model" data-filter="model">
+        <button class="filter-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <img class="filter-icon" alt="" hidden><span class="filter-label">All models</span><span class="caret">▾</span>
+        </button>
+        <div class="filter-menu" role="listbox" hidden></div>
+      </div>
+      <label class="threshold"><span id="min-label">Min tokens</span>
+        <select id="min-tokens">
+          <option value="0">0</option>
+          <option value="100000">100K</option>
+          <option value="1000000" selected>1M</option>
+          <option value="10000000">10M</option>
+          <option value="100000000">100M</option>
+        </select>
+      </label>
+      <input id="search" type="search" placeholder="Filter models, agents or providers" autocomplete="off">
+      <label class="check"><input id="expand-all" type="checkbox"> <span id="expand-label">Expand all</span></label>
+    </section>
+
+    <section class="metrics" id="metrics" aria-label="Totals"></section>
+
+    <section class="card heat-card">
+      <div class="card-head">
+        <div>
+          <h2 id="heat-title">Usage heatmap</h2>
+          <p id="heat-sub">Daily tokens across the whole history</p>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span id="legend-less">Less</span>
+          <i class="lv lv0"></i><i class="lv lv1"></i><i class="lv lv2"></i><i class="lv lv3"></i><i class="lv lv4"></i>
+          <span id="legend-more">More</span>
+        </div>
+      </div>
+      <div class="heat-scroll">
+        <div class="heat-months" id="heat-months"></div>
+        <div class="heat-body">
+          <div class="heat-weekdays" aria-hidden="true"><span></span><span id="wd1">M</span><span></span><span id="wd2">W</span><span></span><span id="wd3">F</span><span></span></div>
+          <div class="heat-grid" id="heat-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card table-card">
+      <div class="tabs" id="tabs" role="tablist">
+        <button type="button" data-tab="models" role="tab" aria-selected="true"><span id="tab-models">Models</span><em id="tab-models-n"></em></button>
+        <button type="button" data-tab="providers" role="tab" aria-selected="false"><span id="tab-providers">Providers</span><em id="tab-providers-n"></em></button>
+        <button type="button" data-tab="log" role="tab" aria-selected="false"><span id="tab-log">Request log</span><em id="tab-log-n"></em></button>
+      </div>
+      <div class="table-bar">
+        <span class="muted" id="table-count"></span>
+      </div>
+      <div class="table-scroll">
+        <div class="columns" id="columns"></div>
+        <div id="list" class="rows" aria-live="polite"></div>
+      </div>
+      <div class="table-foot">
+        <span id="foot-note"></span>
+        <span id="pager" hidden>
+          <button class="btn ghost" id="prev-page" type="button">Prev</button>
+          <span id="page-info"></span>
+          <button class="btn ghost" id="next-page" type="button">Next</button>
+        </span>
+        <span id="updated"></span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span class="muted" id="pricing-note">Official list price equivalent, not cash spend.</span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

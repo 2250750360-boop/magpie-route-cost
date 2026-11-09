@@ -1,0 +1,15 @@
+Vendor icons
+============
+
+The SVG files in ui/icons/ are used only to identify providers in a local
+usage page.
+
+- claude.svg, deepseek.svg, doubao.svg, hunyuan.svg, kimi.svg,
+  longcat-color.svg, minimax.svg, openai.svg, qwen.svg, tencent.svg,
+  xiaomimimo.svg, zhipu.svg, alibaba.svg, bytedance.svg: from CC Switch
+  (https://github.com/farion1231/cc-switch), MIT license.
+- qoder.svg, trae.svg, workbuddy-color.svg: from Magpie's
+  @magpie-community/page-agent-office plugin.
+
+All product names, logos and brands are the property of their respective
+owners. They are used solely to identify the provider or model being measured.
